@@ -1,0 +1,48 @@
+@import '../../../variables';
+@import '../../../mixins.scss';
+
+.friends {
+	border: 1px solid white;
+	margin-top: 15px;
+	border-radius: 20px;
+	background-color: $sides-bg;
+	height: 310px;
+	@include scroll-bar;
+	&_wrapper {
+		padding: 20px;
+		&_current {
+			&-friends {
+				color: $text-color;
+			}
+		}
+		&_list {
+			margin-top: 15px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			column-gap: 25px;
+			row-gap: 15px;
+			&-item {
+				&-img {
+					overflow: hidden;
+					border-radius: 50%;
+					img {
+						width: 80px;
+						height: 80px;
+					}
+				}
+				&-name {
+					font-size: 12px;
+					text-align: center;
+					color: $text-color;
+				}
+			}
+		}
+	}
+}
+
+.divider {
+	height: 1px;
+	background-color: #ffffff6a;
+	margin-top: 10px;
+}

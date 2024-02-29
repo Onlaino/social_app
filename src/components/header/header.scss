@@ -1,0 +1,21 @@
+.main_nav {
+	background-color: #222222;
+	width: 100%;
+	padding: 10px;
+	&_logo {
+		display: flex;
+		align-items: center;
+		column-gap: 10px;
+		&-text {
+			font-size: 20px;
+			color: Black;
+		}
+	}
+	&_wrapper {
+		display: flex;
+		justify-content: space-around;
+		a {
+			text-decoration: none;
+		}
+	}
+}

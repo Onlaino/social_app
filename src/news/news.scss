@@ -1,0 +1,52 @@
+@import '../variables';
+.news {
+	// border: 1px solid white;
+	margin-top: 10px;
+	border-radius: 20px;
+	// overflow: hidden;
+	width: 100%;
+	&_posts {
+		&-item {
+			background-color: $sides-bg;
+			border: 1px solid white;
+			border-radius: 20px;
+			padding: 20px;
+			margin-bottom: 10px;
+			&-header {
+				display: flex;
+				justify-content: left;
+				align-items: center;
+				column-gap: 20px;
+				&-text {
+					p {
+						margin: 0;
+						padding: 0;
+						color: blue;
+						span {
+							color: white;
+						}
+					}
+				}
+				img {
+					border-radius: 50%;
+					overflow: hidden;
+				}
+			}
+			&-body {
+				margin-top: 10px;
+
+				&-img {
+					border-radius: 20px;
+					display: flex;
+					justify-content: center;
+					column-gap: 10px;
+					img {
+						border-radius: 20px;
+						width: 350px;
+						height: 450px;
+					}
+				}
+			}
+		}
+	}
+}

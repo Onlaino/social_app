@@ -1,0 +1,22 @@
+@mixin scroll-bar {
+	overflow: auto;
+	// overflow: scroll;
+	// overflow-y: hidden;
+	&::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+	&::-webkit-scrollbar-track {
+		background: $main-color;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: #6664e3;
+	}
+
+	&::-webkit-scrollbar-thumb:hover {
+		background: #7c7aea;
+	}
+	&::-webkit-scrollbar-thumb:active {
+		background: #6664e3;
+	}
+}

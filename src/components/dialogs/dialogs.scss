@@ -1,0 +1,60 @@
+@import '../../variables';
+
+.dialog {
+	background-color: $sides-bg;
+	border: 1px solid white;
+	width: 100%;
+	margin-top: 10px;
+	border-radius: 20px;
+	display: flex;
+	&_items {
+		border-right: 1px solid white;
+		&_wrapper {
+			display: flex;
+			flex-direction: column;
+			row-gap: 10px;
+			margin-top: 10px;
+			&-input {
+				input {
+					background: transparent;
+					/* Убираем рамки вокруг поля ввода */
+					border: none;
+					outline: none;
+					/* Добавим нижнюю черту для красоты */
+					border-bottom: 1px solid #444;
+					padding: 10px;
+					padding-left: 15px;
+					caret-color: white;
+					margin-top: 0;
+					width: 100%;
+				}
+			}
+			&-item {
+				&:hover {
+					cursor: pointer;
+					background-color: $text-gray-color;
+				}
+				&-wrapper {
+					padding: 15px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					column-gap: 7px;
+					img {
+						border-radius: 50%;
+					}
+					&-text {
+						&-dialog {
+							&-name {
+								color: $text-gray-color;
+							}
+							&-into {
+								color: $text-color;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

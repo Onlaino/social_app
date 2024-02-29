@@ -1,0 +1,51 @@
+@import '../../variables';
+
+.layout_main {
+	margin-top: 10px;
+	width: 800px;
+	&_body {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		grid-template-rows: auto;
+		column-gap: 15px;
+	}
+	.location_nd_more {
+		display: flex;
+		column-gap: 7px;
+		span {
+			display: block;
+		}
+	}
+	&_header {
+		border: 1px solid grey;
+		border-radius: 30px;
+		overflow: hidden;
+		&-bg {
+			height: 200px;
+			overflow: hidden;
+		}
+	}
+	&_user {
+		border-top-left-radius: 30px;
+		border-top-right-radius: 30px;
+		&-info {
+			&-wrapper {
+				&-text {
+					color: $text-color;
+					padding-left: 200px;
+					padding-top: 20px;
+					padding-bottom: 20px;
+				}
+				&-photo {
+					position: relative;
+					img {
+						border-radius: 50%;
+						position: absolute;
+						top: -99px;
+						left: 28px;
+					}
+				}
+			}
+		}
+	}
+}
