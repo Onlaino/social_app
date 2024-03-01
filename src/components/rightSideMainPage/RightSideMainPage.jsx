@@ -2,7 +2,7 @@ import './rightSideMainPage.scss';
 import { PhotoGallery } from './photoGallery/photoGallery';
 import { FriendList } from './friendList/friendList';
 
-export const RightSideMainPage = () => {
+const RightSideMainPage = () => {
 	return (
 		<div className='layout_main'>
 			<div className='layout_main_header'>
@@ -43,3 +43,5 @@ export const RightSideMainPage = () => {
 		</div>
 	);
 };
+
+export default RightSideMainPage;

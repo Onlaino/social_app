@@ -1,21 +1,57 @@
 import './leftSide.scss';
 import { Link } from 'react-router-dom';
+//icons
+import MessageIcon from '@mui/icons-material/Message';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
 
 export const LeftSide = () => {
 	return (
 		<aside>
-			{/* <div className='container'> */}
-			<div className='leftSide_list'>
-				<div><Link to='/'>my profile</Link></div>
-				<div><Link to='/news'>news</Link></div>
-				<div><Link to='/messages'>messages</Link></div>
-				<div><Link to='#'>friends</Link></div>
-				<div><Link to='#'>video</Link></div>
-				<div><Link to='#'>store</Link></div>
-				<div><Link to='#'>other</Link></div>
-				<div><Link to='#'>site contact info</Link></div>
-			</div>
-			{/* </div> */}
+			<ul className='leftSide_list'>
+				<li>
+					<Link to='/'>
+						<AccountCircleIcon style={{ color: 'white' }} />
+						<div>My profile</div>
+					</Link>
+				</li>
+				<li>
+					<Link to='/messages'>
+						<MessageIcon style={{ color: 'white' }} />
+						<div>Messages</div>
+					</Link>
+				</li>
+				<li>
+					<Link to='/news'>
+						<NewspaperIcon style={{ color: 'white' }} />
+						<div>News</div>
+					</Link>
+				</li>
+				<li>
+					<Link to='/'>
+						<MessageIcon style={{ color: 'white' }} />
+						<div>Messages</div>
+					</Link>
+				</li>
+				<li>
+					<Link to='/'>
+						<MessageIcon style={{ color: 'white' }} />
+						<div>Messages</div>
+					</Link>
+				</li>
+				<li>
+					<Link to='/'>
+						<MessageIcon style={{ color: 'white' }} />
+						<div>Messages</div>
+					</Link>
+				</li>
+				<li>
+					<Link to='/'>
+						<MessageIcon style={{ color: 'white' }} />
+						<div>Messages</div>
+					</Link>
+				</li>
+			</ul>
 		</aside>
 	);
 };

@@ -1,6 +1,6 @@
 import './dialogs.scss';
 
-export const Dialogs = () => {
+const Dialogs = () => {
 	return (
 		<section className='dialog'>
 			<div className='dialog_items'>
@@ -62,3 +62,6 @@ export const Dialogs = () => {
 		</section>
 	);
 };
+
+
+export default Dialogs;

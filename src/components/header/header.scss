@@ -1,21 +1,45 @@
+@import '../../variables.scss';
+
 .main_nav {
 	background-color: #222222;
 	width: 100%;
 	padding: 10px;
+	border-radius: 20px;
+	&_profile {
+		position: relative;
+	}
 	&_logo {
 		display: flex;
 		align-items: center;
 		column-gap: 10px;
 		&-text {
 			font-size: 20px;
-			color: Black;
+			color: white;
 		}
 	}
 	&_wrapper {
 		display: flex;
-		justify-content: space-around;
+		margin-left: 158px;
+		column-gap: 588px;
+		align-items: center;
 		a {
 			text-decoration: none;
 		}
+	}
+}
+
+.dropDownHeader {
+	position: absolute;
+	width: 160px;
+	height: 200px;
+	border-radius: 10px;
+	border: 1px solid white;
+	top: 43px;
+	left: -27px;
+	background-color: $sides-bg;
+	&_list {
+		list-style-type: none;
+		text-decoration: none;
+		color: $text-gray-color;
 	}
 }

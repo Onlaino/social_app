@@ -7,9 +7,9 @@ import './mainPage.scss';
 export const MainPage = () => {
 	return (
 		<>
-			<Header />
+			{/* <Header /> */}
 			<div className='sides_wrapper'>
-				<LeftSide />
+				{/* <LeftSide /> */}
 				<RightSideMainPage />
 			</div>
 		</>

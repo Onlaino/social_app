@@ -1,12 +1,33 @@
 import './header.scss';
 
-import { Avatar } from '@chakra-ui/react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+import FaceIcon from '@mui/icons-material/Face';
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
+
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+const dropDownHeaderVariants = {
+	initial: {
+		height: 0,
+		opacity: 0,
+	},
+	animate: {
+		height: '150px',
+		opacity: 1,
+	},
+	exit: {
+		height: 0,
+		opacity: 0,
+	},
+};
+
 export const Header = () => {
+	const [isOpen, setIsOpen] = useState(false);
+
 	return (
 		<nav className='main_nav'>
-			{/* <div className='container'> */}
 			<div className='main_nav_wrapper'>
 				<Link to='/'>
 					<div className='main_nav_logo'>
@@ -22,16 +43,34 @@ export const Header = () => {
 				</Link>
 
 				<div className='main_nav_profile'>
-					<Avatar
-						borderRadius='50%'
-						width='50px'
-						height={'50px'}
-						name='Kola Tio	luwani'
-						src='https://sun9-1.userapi.com/impg/_xUCqVjhLabqXolbBMOS9Q3MVbpLJCWgYy8Dag/jJL8lr2nItY.jpg?size=1156x1583&quality=95&sign=df8002f55f4b3fbac043c337358b3f77&type=album'
+					<FaceIcon fontSize='large' color='primary' />
+					<KeyboardDoubleArrowDownIcon
+						style={{ cursor: 'pointer' }}
+						onClick={() => setIsOpen(!isOpen)}
+						fontSize='small'
+						color='primary'
 					/>
+					<AnimatePresence>
+						{isOpen ? (
+							<motion.div
+								variants={dropDownHeaderVariants}
+								initial='initial'
+								animate='animate'
+								exit='exit'
+								className='dropDownHeader'
+							>
+								<ul className='dropDownHeader_list'>
+									<li>1111111111</li>
+									<li>1111111111</li>
+									<li>1111111111</li>
+									<li>1111111111</li>
+									<li>1111111111</li>
+								</ul>
+							</motion.div>
+						) : null}
+					</AnimatePresence>
 				</div>
 			</div>
-			{/* </div> */}
 		</nav>
 	);
 };

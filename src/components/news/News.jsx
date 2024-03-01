@@ -1,6 +1,6 @@
 import './news.scss';
 
-export const News = () => {
+const News = () => {
 
 	return (
 		<section className='news'>
@@ -93,3 +93,6 @@ export const News = () => {
 		</section>
 	);
 };
+
+
+export default News;

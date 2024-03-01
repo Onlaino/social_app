@@ -6,9 +6,9 @@ import './messagesPage.scss';
 export const MessagesPage = () => {
 	return (
 		<>
-			<Header />
+			{/* <Header /> */}
 			<div className='sides_wrapper'>
-				<LeftSide />
+				{/* <LeftSide /> */}
 				<Dialogs />
 			</div>
 		</>
