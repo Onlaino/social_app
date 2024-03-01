@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './dialogs.scss';
 
 export const Dialogs = () => {
