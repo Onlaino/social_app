@@ -1,6 +1,7 @@
 import './news.scss';
 
 export const News = () => {
+
 	return (
 		<section className='news'>
 			<div className='news_posts'>
