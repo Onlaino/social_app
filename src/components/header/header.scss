@@ -1,10 +1,11 @@
 @import '../../variables.scss';
 
 .main_nav {
-	background-color: #222222;
+	background-color: $sides-bg;
+	border: 1px solid $border-color-sides;
 	width: 100%;
 	padding: 10px;
-	border-radius: 20px;
+	border-radius: 10px;
 	&_profile {
 		position: relative;
 	}
@@ -33,7 +34,7 @@
 	width: 160px;
 	height: 200px;
 	border-radius: 10px;
-	border: 1px solid white;
+	border: 1px solid $border-color-sides;
 	top: 43px;
 	left: -27px;
 	background-color: $sides-bg;

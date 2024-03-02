@@ -1,0 +1,90 @@
+@import '../../variables.scss';
+
+.friends_side {
+	margin-top: 10px;
+	width: 60%;
+	border: 1px solid $border-color-sides;
+	border-radius: 10px;
+	&_remove {
+		position: absolute;
+		top: 40px;
+		right: 50px;
+		&:hover {
+			cursor: pointer;
+			scale: 1.1;
+		}
+	}
+	&-tabs {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		padding-left: 15px;
+		div {
+			width: 100px;
+			height: 25px;
+			border-radius: 10px;
+			span {
+				padding: 7px;
+				color: $text-gray-color;
+			}
+			&:hover {
+				cursor: pointer;
+				background-color: $border-color-sides;
+			}
+		}
+	}
+	&_wrapper {
+		padding: 15px;
+		&_items {
+			margin-top: 10px;
+			&-item {
+				position: relative;
+				padding: 20px;
+				display: flex;
+				align-items: center;
+				column-gap: 10px;
+				&:after {
+					content: '';
+					height: 1px;
+					width: 100%;
+					background-color: $border-color-sides;
+					position: absolute;
+					bottom: -10px;
+					left: 0;
+					// left: 15%;
+				}
+				&-info {
+					display: flex;
+					flex-direction: column;
+					row-gap: 5px;
+					margin-left: 15px;
+					&-name {
+						color: #dcdadae6;
+						font-size: 20px;
+						&:hover {
+							text-decoration: underline;
+							cursor: pointer;
+						}
+					}
+					p {
+						margin: 0;
+						padding: 0;
+						color: $text-gray-color;
+						span {
+							transition: all 0.2s ease;
+							color: rgb(43, 43, 140);
+							&:hover {
+								cursor: pointer;
+								color: blue;
+							}
+						}
+					}
+				}
+				img {
+					border-radius: 50%;
+				}
+			}
+		}
+	}
+}

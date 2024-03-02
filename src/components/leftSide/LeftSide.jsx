@@ -10,7 +10,7 @@ export const LeftSide = () => {
 		<aside>
 			<ul className='leftSide_list'>
 				<li>
-					<Link to='/'>
+					<Link to='/main'>
 						<AccountCircleIcon style={{ color: 'white' }} />
 						<div>My profile</div>
 					</Link>
@@ -28,27 +28,27 @@ export const LeftSide = () => {
 					</Link>
 				</li>
 				<li>
-					<Link to='/'>
+					<Link to='/friends'>
 						<MessageIcon style={{ color: 'white' }} />
-						<div>Messages</div>
+						<div>Friends</div>
 					</Link>
 				</li>
 				<li>
 					<Link to='/'>
 						<MessageIcon style={{ color: 'white' }} />
-						<div>Messages</div>
+						<div>Video</div>
 					</Link>
 				</li>
 				<li>
 					<Link to='/'>
 						<MessageIcon style={{ color: 'white' }} />
-						<div>Messages</div>
+						<div>Games</div>
 					</Link>
 				</li>
 				<li>
 					<Link to='/'>
 						<MessageIcon style={{ color: 'white' }} />
-						<div>Messages</div>
+						<div>Services</div>
 					</Link>
 				</li>
 			</ul>

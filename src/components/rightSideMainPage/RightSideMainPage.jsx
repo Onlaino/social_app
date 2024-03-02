@@ -1,6 +1,8 @@
 import './rightSideMainPage.scss';
 import { PhotoGallery } from './photoGallery/photoGallery';
-import { FriendList } from './friendList/friendList';
+import { lazy } from 'react';
+
+const FriendList = lazy(() => import('./friendList/friendList'));
 
 const RightSideMainPage = () => {
 	return (

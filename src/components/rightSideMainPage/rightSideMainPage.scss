@@ -3,6 +3,7 @@
 .layout_main {
 	margin-top: 10px;
 	width: 84%;
+
 	&_body {
 		display: grid;
 		grid-template-columns: 2fr 1fr;
@@ -17,17 +18,16 @@
 		}
 	}
 	&_header {
-		border: 1px solid grey;
-		border-radius: 30px;
+		border: 1px solid $border-color-sides;
+		border-radius: 10px;
 		overflow: hidden;
+		background-color: $sides-bg;
 		&-bg {
 			height: 200px;
 			overflow: hidden;
 		}
 	}
 	&_user {
-		border-top-left-radius: 30px;
-		border-top-right-radius: 30px;
 		&-info {
 			&-wrapper {
 				&-text {

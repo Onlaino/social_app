@@ -9,14 +9,13 @@
 		width: 150px;
 		transition: all 0.6s ease;
 		border-radius: 10px;
-
 		&:hover {
 			background-color: $text-gray-color;
 		}
 		a {
 			text-decoration: none;
-			color: $text-color;
-			display: block;
+			color: #cdc5c5e6;
+			font-weight: 100;
 			padding: 10px;
 			display: flex;
 			align-items: center;

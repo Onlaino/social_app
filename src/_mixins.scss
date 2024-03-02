@@ -1,7 +1,5 @@
 @mixin scroll-bar {
 	overflow: auto;
-	// overflow: scroll;
-	// overflow-y: hidden;
 	&::-webkit-scrollbar {
 		width: 10px;
 		height: 10px;
@@ -19,4 +17,8 @@
 	&::-webkit-scrollbar-thumb:active {
 		background: #6664e3;
 	}
+}
+
+@mixin border-radius-sidex {
+	border-radius: 10px;
 }

@@ -2,12 +2,12 @@
 @import '../../../mixins.scss';
 
 .friends {
-	border: 1px solid white;
+	border: 1px solid $border-color-sides;
 	margin-top: 15px;
-	border-radius: 20px;
+	border-radius: 10px;
 	background-color: $sides-bg;
 	height: 310px;
-	@include scroll-bar;
+	// @include scroll-bar;
 	&_wrapper {
 		padding: 20px;
 		&_current {

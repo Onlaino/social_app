@@ -1,7 +1,5 @@
 import './header.scss';
-
 import { motion, AnimatePresence } from 'framer-motion';
-
 import FaceIcon from '@mui/icons-material/Face';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 
@@ -29,7 +27,7 @@ export const Header = () => {
 	return (
 		<nav className='main_nav'>
 			<div className='main_nav_wrapper'>
-				<Link to='/'>
+				<Link to='/main'>
 					<div className='main_nav_logo'>
 						<img
 							src='https://i.etsystatic.com/9092070/r/il/8ce347/4430138385/il_fullxfull.4430138385_pkws.jpg'
@@ -44,6 +42,10 @@ export const Header = () => {
 
 				<div className='main_nav_profile'>
 					<FaceIcon fontSize='large' color='primary' />
+					<Link to='/login' style={{ color: 'white' }}>
+						{' '}
+						LOGIN{' '}
+					</Link>
 					<KeyboardDoubleArrowDownIcon
 						style={{ cursor: 'pointer' }}
 						onClick={() => setIsOpen(!isOpen)}
