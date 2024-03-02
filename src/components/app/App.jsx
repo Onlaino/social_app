@@ -5,13 +5,16 @@ import { Suspense, lazy } from 'react';
 // components
 import { LeftSide } from '../leftSide/LeftSide';
 import { Header } from '../header/Header';
+import { Spinner } from '@chakra-ui/react';
 
 // styles
 import './App.scss';
 
-const LazyRightSide = lazy(() => import('../../components/rightSideMainPage/RightSideMainPage'));
+// lazy
+const LazyRightSide = lazy(() =>
+	import('../../components/rightSideMainPage/RightSideMainPage')
+);
 const LazyDialogs = lazy(() => import('../../components/dialogs/Dialogs'));
-
 const LazyNews = lazy(() => import('../../components/news/News'));
 
 function App() {
@@ -21,7 +24,7 @@ function App() {
 				<Header />
 				<div className='sides_wrapper'>
 					<LeftSide />
-					<Suspense fallback={<div>Loading...</div>}>
+					<Suspense fallback={<Spinner />}>
 						<Routes>
 							<Route path='/' element={<LazyRightSide />} />
 							<Route path='/messages' element={<LazyDialogs />} />
