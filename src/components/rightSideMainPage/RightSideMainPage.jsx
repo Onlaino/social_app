@@ -1,10 +1,62 @@
 import './rightSideMainPage.scss';
 import { PhotoGallery } from './photoGallery/photoGallery';
 import { lazy } from 'react';
+import { useGetFriendsQuery } from '../../api/apiSlice';
+import { Box, CircularProgress } from '@mui/material';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useState } from 'react';
+import { skipToken } from '@reduxjs/toolkit/query';
 
 const FriendList = lazy(() => import('./friendList/friendList'));
 
+const dropDownInfoVariants = {
+	initial: {
+		height: 0,
+		opacity: 0,
+	},
+	animate: {
+		height: '100px',
+		opacity: 1,
+	},
+	exit: {
+		height: 0,
+		opacity: 0,
+	},
+};
+
 const RightSideMainPage = () => {
+	const [isOpen, setIsOpen] = useState(false);
+	const [loaded, setLoaded] = useState(false);
+
+	const {
+		data: friends,
+		error,
+		isLoading,
+	} = useGetFriendsQuery(loaded ? undefined : skipToken);
+
+	if (isLoading)
+		return (
+			<Box
+				sx={{
+					width: 100,
+					height: 100,
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					alignSelf: 'center',
+				}}
+			>
+				<CircularProgress />
+			</Box>
+		);
+	if (error) {
+		return (
+			<div style={{ fontSize: 30, color: 'white' }}>
+				Error: {error.toString()}
+			</div>
+		);
+	}
+
 	return (
 		<div className='layout_main'>
 			<div className='layout_main_header'>
@@ -31,7 +83,29 @@ const RightSideMainPage = () => {
 								<br />
 								<div className='location_nd_more'>
 									<span>location</span>
-									<span>подробнее</span>
+									<span
+										className='location_nd_more-info'
+										onClick={() => setIsOpen(!isOpen)}
+									>
+										more info
+									</span>
+									{isOpen ? (
+										<AnimatePresence>
+											<motion.div
+												variants={dropDownInfoVariants}
+												initial='initial'
+												animate='animate'
+												exit='exit'
+												className='dropdown_info'
+											>
+												<ul className='dropdown_info_list'>
+													<li className='dropdown_info_list-item'>data</li>
+													<li className='dropdown_info_list-item'>data</li>
+													<li className='dropdown_info_list-item'>data</li>
+												</ul>
+											</motion.div>
+										</AnimatePresence>
+									) : null}
 								</div>
 							</div>
 						</div>

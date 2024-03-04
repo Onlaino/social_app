@@ -17,9 +17,10 @@
 		}
 		&_list {
 			margin-top: 15px;
-			display: flex;
 			flex-wrap: wrap;
+			display: flex;
 			justify-content: center;
+			align-items: center;
 			column-gap: 25px;
 			row-gap: 15px;
 			&-item {

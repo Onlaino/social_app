@@ -1,21 +1,52 @@
-import './friendsSide.scss';
-import { useEffect, useState } from 'react';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
+import { motion } from 'framer-motion';
+import { useGetFriendsQuery } from '../../api/apiSlice';
+import { Skeleton } from '@mui/material';
+import './friendsSide.scss';
+
+const friendsVariants = {
+	initial: {
+		height: 0,
+		opacity: 0,
+	},
+	animate: {
+		height: '150px',
+		opacity: 1,
+	},
+	exit: {
+		height: 0,
+		opacity: 0,
+	},
+};
 
 const FriendsSide = () => {
-	const [friends, setFriends] = useState([]);
-
-	useEffect(() => {
-		fetch(
-			'https://65e2f8ef88c4088649f51c74.mockapi.io/social_app/friends/friends'
-		)
-			.then(res => res.json())
-			.then(res => setFriends(res));
-	}, []);
-
+	const { data: friends, error, isLoading } = useGetFriendsQuery();
+	if (isLoading)
+		return (
+			<Skeleton
+				variant='rectangular'
+				width={210}
+				height={118}
+				sx={{ bgcolor: 'white.900' }}
+			/>
+		);
+	if (error) {
+		return (
+			<div style={{ fontSize: 30, color: 'white' }}>
+				Error: {console.log(error)}
+			</div>
+		);
+	}
 	const renderFriends = arr =>
 		arr.map(fr => (
-			<div className='friends_side_wrapper_items-item'>
+			<motion.div
+				variants={friendsVariants}
+				initial='initial'
+				animate='animate'
+				exit='exit'
+				className='friends_side_wrapper_items-item'
+				key={fr.id}
+			>
 				<img src={fr.avatar} width={100} height={100} alt={fr.avatar} />
 				<div className='friends_side_wrapper_items-item-info'>
 					<p className='friends_side_wrapper_items-item-info-name'>
@@ -34,8 +65,8 @@ const FriendsSide = () => {
 				<div className='friends_side_remove'>
 					<PersonRemoveIcon color='white' />
 				</div>
-			</div>
-	));
+			</motion.div>
+		));
 
 	const renderedFriends = renderFriends(friends);
 

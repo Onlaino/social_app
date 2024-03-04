@@ -1,16 +1,23 @@
+import { useGetFriendsQuery } from '../../../api/apiSlice';
 import './friendList.scss';
-import { useEffect, useState } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 const FriendList = () => {
-	const [friends, setFriends] = useState([]);
-
-	useEffect(() => {
-		fetch(
-			'https://65e2f8ef88c4088649f51c74.mockapi.io/social_app/friends/friends'
-		)
-			.then(res => res.json())
-			.then(res => setFriends(res));
-	}, []);
+	const { data: friends, error, isLoading } = useGetFriendsQuery();
+	if (isLoading)
+		return (
+			<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', alignSelf: 'center' }}>
+				<CircularProgress />
+			</Box>
+		);
+	if (error) {
+		return (
+			<div style={{ fontSize: 30, color: 'white' }}>
+				Error: {error.toString()}
+			</div>
+		);
+	}
 
 	const renderFriends = arr =>
 		arr.map(friend => (
@@ -31,33 +38,7 @@ const FriendList = () => {
 			<div className='friends_wrapper'>
 				<div className='friends_wrapper_current-friends'>Friends online</div>
 				<div className='divider'></div>
-				<div className='friends_wrapper_list'>
-					{friendsList.slice(0, 4)}
-					{/* <div className='friends_wrapper_list-item'>
-						<div className='friends_wrapper_list-item-img'>
-							<img src={interfect} alt='' />
-						</div>
-						<div className='friends_wrapper_list-item-name'>Юля Рожкова</div>
-					</div>
-					<div className='friends_wrapper_list-item'>
-						<div className='friends_wrapper_list-item-img'>
-							<img src={interfect} alt='' />
-						</div>
-						<div className='friends_wrapper_list-item-name'>Юля Рожкова</div>
-					</div>
-					<div className='friends_wrapper_list-item'>
-						<div className='friends_wrapper_list-item-img'>
-							<img src={interfect} alt='' />
-						</div>
-						<div className='friends_wrapper_list-item-name'>Юля Рожкова</div>
-					</div>
-					<div className='friends_wrapper_list-item'>
-						<div className='friends_wrapper_list-item-img'>
-							<img src={interfect} alt='' />
-						</div>
-						<div className='friends_wrapper_list-item-name'>Юля Рожкова</div>
-					</div> */}
-				</div>
+				<div className='friends_wrapper_list'>{friendsList.slice(0, 4)}</div>
 			</div>
 		</section>
 	);

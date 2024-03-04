@@ -1,8 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { friendsApi } from '../api/apiSlice';
+import { setupListeners } from '@reduxjs/toolkit/query';
 
 export const store = configureStore({
 	reducer: {
-		counter: counterReducer,
+		[friendsApi.reducerPath]: friendsApi.reducer,
+	},
+	middleware: getDefaultMiddleware => {
+		return getDefaultMiddleware().concat(friendsApi.middleware);
 	},
 });
+
+setupListeners(store.dispatch);

@@ -1,7 +1,109 @@
+@import '../../variables';
+
+.form_error_password {
+	position: absolute;
+	bottom: -25px;
+	left: 93px;
+	color: blue;
+}
+
+.form_error_username {
+	position: absolute;
+	bottom: -23px;
+    left: 93px;
+	color: blue;
+}
+
 .form_overlay {
-	width: 100svh;
-	height: 100svh;
-	background-color: blue;
-	position: fixed;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
 	z-index: 100;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(92, 90, 90, 0.87);
+}
+.form_wrapper {
+	width: 400px;
+	// height: 350px;
+	border: 1px solid black;
+	border-radius: 10px;
+	background-color: $sides-bg;
+	justify-content: center;
+	align-items: center;
+	row-gap: 50px;
+	display: flex;
+
+	form {
+		display: block;
+		// width: 300px;
+		// height: 380px;
+		margin: 0;
+		padding: 30px;
+		display: flex;
+		flex-direction: column;
+		// justify-content: space-around;
+		row-gap: 30px;
+	}
+	button {
+		border-radius: 10px;
+		background-color: $sides-bg;
+		color: white;
+		border:none;
+		transition: all .5s ease;
+		font-size: 30px;
+		&:hover {
+			background-color: $text-gray-color;
+		}
+	}
+	&_inputs {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		// height: 300px;
+	}
+	&_header {
+		color: white;
+		text-align: center;
+		font-size: 44px;
+		margin: 0;
+		padding: 0;
+	}
+	&-username {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		color: white;
+		label {
+			font-size: 26px;
+		}
+		input {
+			border-radius: 10px;
+			border: none;
+			background-color: rgba(92, 90, 90, 0.87);
+			padding: 5px;
+			font-size: 22px;
+			color: white;
+		}
+	}
+	&-password {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		color: white;
+		label {
+			font-size: 26px;
+		}
+		input {
+			border-radius: 10px;
+			border: none;
+			background-color: rgba(92, 90, 90, 0.87);
+			padding: 5px;
+			font-size: 22px;
+			color: white;
+		}
+	}
 }
