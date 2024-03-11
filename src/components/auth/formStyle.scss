@@ -10,17 +10,21 @@
 .form_error_username {
 	position: absolute;
 	bottom: -23px;
-    left: 93px;
+	left: 93px;
 	color: blue;
 }
 
 .form_overlay {
+	position: fixed; /* Позиционируется относительно окна браузера */
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 	margin: 0;
 	padding: 0;
 	width: 100%;
 	height: 100%;
 	z-index: 100;
-	position: absolute;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -52,8 +56,8 @@
 		border-radius: 10px;
 		background-color: $sides-bg;
 		color: white;
-		border:none;
-		transition: all .5s ease;
+		border: none;
+		transition: all 0.5s ease;
 		font-size: 30px;
 		&:hover {
 			background-color: $text-gray-color;

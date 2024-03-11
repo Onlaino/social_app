@@ -4,6 +4,8 @@ import FaceIcon from '@mui/icons-material/Face';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { removeUser } from '../../store/slices/userSlice';
 import { Link } from 'react-router-dom';
 
 const dropDownHeaderVariants = {
@@ -23,6 +25,7 @@ const dropDownHeaderVariants = {
 
 export const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	const dispatch = useDispatch();
 
 	return (
 		<nav className='main_nav'>
@@ -52,6 +55,9 @@ export const Header = () => {
 						fontSize='small'
 						color='primary'
 					/>
+					<div>
+						<button onClick={() => dispatch(removeUser())}>LOGUOT</button>
+					</div>
 					<AnimatePresence>
 						{isOpen ? (
 							<motion.div

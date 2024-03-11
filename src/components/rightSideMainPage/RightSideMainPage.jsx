@@ -6,6 +6,8 @@ import { Box, CircularProgress } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import { skipToken } from '@reduxjs/toolkit/query';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 
 const FriendList = lazy(() => import('./friendList/friendList'));
 
@@ -27,37 +29,41 @@ const dropDownInfoVariants = {
 const RightSideMainPage = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [loaded, setLoaded] = useState(false);
+	const { isAuth, email } = useAuth();
+	let navigate = useNavigate();
 
-	const {
-		data: friends,
-		error,
-		isLoading,
-	} = useGetFriendsQuery(loaded ? undefined : skipToken);
+	// navigate('/login'); // перенаправление на новый путь
+	// console.log(isAuth);
+	// const {
+	// 	data: friends,
+	// 	error,
+	// 	isLoading,
+	// } = useGetFriendsQuery(loaded ? undefined : skipToken);
 
-	if (isLoading)
-		return (
-			<Box
-				sx={{
-					width: 100,
-					height: 100,
-					display: 'flex',
-					justifyContent: 'center',
-					alignItems: 'center',
-					alignSelf: 'center',
-				}}
-			>
-				<CircularProgress />
-			</Box>
-		);
-	if (error) {
-		return (
-			<div style={{ fontSize: 30, color: 'white' }}>
-				Error: {error.toString()}
-			</div>
-		);
-	}
+	// if (isLoading)
+	// 	return (
+	// 		<Box
+	// 			sx={{
+	// 				width: 100,
+	// 				height: 100,
+	// 				display: 'flex',
+	// 				justifyContent: 'center',
+	// 				alignItems: 'center',
+	// 				alignSelf: 'center',
+	// 			}}
+	// 		>
+	// 			<CircularProgress />
+	// 		</Box>
+	// 	);
+	// if (error) {
+	// 	return (
+	// 		<div style={{ fontSize: 30, color: 'white' }}>
+	// 			Error: {error.toString()}
+	// 		</div>
+	// 	);
+	// }
 
-	return (
+	return isAuth ? (
 		<div className='layout_main'>
 			<div className='layout_main_header'>
 				<div className='layout_main_header-bg'>
@@ -117,6 +123,8 @@ const RightSideMainPage = () => {
 				<FriendList />
 			</div>
 		</div>
+	) : (
+		navigate('/login')
 	);
 };
 

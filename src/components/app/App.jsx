@@ -5,9 +5,11 @@ import { store } from '../../store/store';
 // components
 import { LeftSide } from '../leftSide/LeftSide';
 import { Header } from '../header/Header';
-import LoginForm from '../loginForm/LoginForm.jsx';
+import { LoginPage } from '../auth/authPages/LoginPage';
+import { RegisterPage } from '../auth/authPages/RegisterPage';
 // styles
 import './App.scss';
+
 // lazy
 const LazyRightSide = lazy(() =>
 	import('../../components/rightSideMainPage/RightSideMainPage')
@@ -22,18 +24,18 @@ function App() {
 	return (
 		<Provider store={store}>
 			<BrowserRouter>
-				{/* <LoginForm /> */}
 				<main className='container'>
 					<Header />
 					<div className='sides_wrapper'>
 						<LeftSide />
 						<Suspense fallback={<div>Loading...</div>}>
 							<Routes>
-								{/* <Route path='/login' element={<LoginForm />} /> */}
 								<Route path='/main' element={<LazyRightSide />} />
 								<Route path='/messages' element={<LazyDialogs />} />
 								<Route path='/news' element={<LazyNews />} />
 								<Route path='/friends' element={<LazyFriends />} />
+								<Route path='/login' element={<LoginPage />} />
+								<Route path='/register' element={<RegisterPage />} />
 							</Routes>
 						</Suspense>
 					</div>
