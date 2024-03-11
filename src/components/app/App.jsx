@@ -30,12 +30,12 @@ function App() {
 						<LeftSide />
 						<Suspense fallback={<div>Loading...</div>}>
 							<Routes>
+								<Route path='/' element={<LoginPage />} />
+								<Route path='/register' element={<RegisterPage />} />
 								<Route path='/main' element={<LazyRightSide />} />
 								<Route path='/messages' element={<LazyDialogs />} />
 								<Route path='/news' element={<LazyNews />} />
 								<Route path='/friends' element={<LazyFriends />} />
-								<Route path='/login' element={<LoginPage />} />
-								<Route path='/register' element={<RegisterPage />} />
 							</Routes>
 						</Suspense>
 					</div>

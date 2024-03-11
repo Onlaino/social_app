@@ -8,6 +8,9 @@
 	border-radius: 10px;
 	&_profile {
 		position: relative;
+		display: flex;
+		column-gap: 10px;
+		align-items: center;
 	}
 	&_logo {
 		display: flex;

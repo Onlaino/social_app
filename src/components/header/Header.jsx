@@ -4,8 +4,6 @@ import FaceIcon from '@mui/icons-material/Face';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { removeUser } from '../../store/slices/userSlice';
 import { Link } from 'react-router-dom';
 
 const dropDownHeaderVariants = {
@@ -25,7 +23,6 @@ const dropDownHeaderVariants = {
 
 export const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const dispatch = useDispatch();
 
 	return (
 		<nav className='main_nav'>
@@ -45,7 +42,7 @@ export const Header = () => {
 
 				<div className='main_nav_profile'>
 					<FaceIcon fontSize='large' color='primary' />
-					<Link to='/login' style={{ color: 'white' }}>
+					<Link to='/' style={{ color: 'white' }}>
 						{' '}
 						LOGIN{' '}
 					</Link>
@@ -56,7 +53,8 @@ export const Header = () => {
 						color='primary'
 					/>
 					<div>
-						<button onClick={() => dispatch(removeUser())}>LOGUOT</button>
+						{/* <button onClick={() => navigate('/')}>LogOut</button> */}
+						{/* <button onClick={() => dispatch(removeUser())}>LogOut</button> */}
 					</div>
 					<AnimatePresence>
 						{isOpen ? (
@@ -68,11 +66,11 @@ export const Header = () => {
 								className='dropDownHeader'
 							>
 								<ul className='dropDownHeader_list'>
-									<li>1111111111</li>
-									<li>1111111111</li>
-									<li>1111111111</li>
-									<li>1111111111</li>
-									<li>1111111111</li>
+									<li>info</li>
+									<li>info</li>
+									<li>info</li>
+									<li>info</li>
+									<li>info</li>
 								</ul>
 							</motion.div>
 						) : null}
