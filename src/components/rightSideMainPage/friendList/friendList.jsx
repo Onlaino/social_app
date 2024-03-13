@@ -7,7 +7,14 @@ const FriendList = () => {
 	const { data: friends, error, isLoading } = useGetFriendsQuery();
 	if (isLoading)
 		return (
-			<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', alignSelf: 'center' }}>
+			<Box
+				sx={{
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					alignSelf: 'center',
+				}}
+			>
 				<CircularProgress />
 			</Box>
 		);
@@ -36,9 +43,9 @@ const FriendList = () => {
 	return (
 		<section className='friends'>
 			<div className='friends_wrapper'>
-				<div className='friends_wrapper_current-friends'>Friends online</div>
+				<div className='friends_wrapper_current-friends'>Friends</div>
 				<div className='divider'></div>
-				<div className='friends_wrapper_list'>{friendsList.slice(0, 4)}</div>
+				<div className='friends_wrapper_list'>{friendsList.slice(0, 6)}</div>
 			</div>
 		</section>
 	);

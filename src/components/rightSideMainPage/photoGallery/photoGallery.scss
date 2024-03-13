@@ -7,11 +7,17 @@
 	border-radius: 10px;
 	background-color: $sides-bg;
 	&_into {
-		padding: 20px;
+		padding: 12px;
+		&_header {
+			text-align: center;
+			font-size: 32px;
+			color: white;
+		}
 		&_photos {
-			height: 400px;
+			height: 350px;
 			margin-top: 10px;
 			display: flex;
+			justify-content: left;
 			flex-wrap: wrap;
 			gap: 5px;
 			overflow: auto;

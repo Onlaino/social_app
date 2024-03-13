@@ -32,7 +32,6 @@ const RightSideMainPage = () => {
 	const user = useSelector(state => state.user);
 	let navigate = useNavigate();
 
-	
 	return isAuth ? (
 		<div className='layout_main'>
 			<div className='layout_main_header'>
@@ -54,18 +53,20 @@ const RightSideMainPage = () => {
 								/>
 							</div>
 							<div className='layout_main_user-info-wrapper-text'>
-								<h2>{user.name} {user.surname}</h2>
+								<h2>
+									{user.name} {user.surname}
+								</h2>
 								<span>status</span>
 								<br />
 								<div className='location_nd_more'>
 									<span>location</span>
 									<span
 										className='location_nd_more-info'
-										// onClick={() => setIsOpen(!isOpen)}
+										onClick={() => setIsOpen(!isOpen)}
 									>
 										more info
 									</span>
-									{/* {isOpen ? (
+									{isOpen ? (
 										<AnimatePresence>
 											<motion.div
 												variants={dropDownInfoVariants}
@@ -81,7 +82,7 @@ const RightSideMainPage = () => {
 												</ul>
 											</motion.div>
 										</AnimatePresence>
-									) : null} */}
+									) : null}
 								</div>
 							</div>
 						</div>
