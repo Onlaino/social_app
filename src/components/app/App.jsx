@@ -7,6 +7,7 @@ import { LeftSide } from '../leftSide/LeftSide';
 import { Header } from '../header/Header';
 import { LoginPage } from '../auth/authPages/LoginPage';
 import { RegisterPage } from '../auth/authPages/RegisterPage';
+import { FriendPage } from '../rightSideMainPage/friendPage/FriendPage';
 // styles
 import './App.scss';
 
@@ -19,6 +20,7 @@ const LazyNews = lazy(() => import('../../components/news/News'));
 const LazyFriends = lazy(() =>
 	import('../../components/friendsSide/FriendsSide')
 );
+const Lazy404 = lazy(() => import('../Page404/Page404'));
 
 function App() {
 	return (
@@ -36,6 +38,8 @@ function App() {
 								<Route path='/messages' element={<LazyDialogs />} />
 								<Route path='/news' element={<LazyNews />} />
 								<Route path='/friends' element={<LazyFriends />} />
+								<Route path='/friend_page/:friendId' element={<FriendPage />} />
+								<Route path='*' element={<Lazy404 />} />
 							</Routes>
 						</Suspense>
 					</div>

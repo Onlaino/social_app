@@ -2,10 +2,10 @@ import { useGetFriendsQuery } from '../../../api/apiSlice';
 import './friendList.scss';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom';
 
-const FriendList = () => {
-	const { data: friends, error, isLoading } = useGetFriendsQuery();
-	if (isLoading)
+const FriendList = ({ friendsProps }) => {
+	if (!friendsProps)
 		return (
 			<Box
 				sx={{
@@ -18,28 +18,27 @@ const FriendList = () => {
 				<CircularProgress />
 			</Box>
 		);
-	if (error) {
-		return (
-			<div style={{ fontSize: 30, color: 'white' }}>
-				Error: {error.toString()}
-			</div>
-		);
-	}
 
 	const renderFriends = arr =>
-		arr.map(friend => (
-			<div className='friends_wrapper_list-item' key={friend.id}>
-				<div className='friends_wrapper_list-item-img'>
-					<img src={friend.avatar} alt={friend.avatar} />
-				</div>
-				<div className='friends_wrapper_list-item-name'>
-					{friend.name}
-					{friend.surname}
-				</div>
+		arr.map(friendsProps => (
+			<div
+				className='friends_wrapper_list-item'
+				friendid={friendsProps.id}
+				key={friendsProps.id}
+			>
+				<Link to={`/friend_page/${friendsProps.id}`}>
+					<div className='friends_wrapper_list-item-img'>
+						<img src={friendsProps.avatar} alt={friendsProps.avatar} />
+					</div>
+					<div className='friends_wrapper_list-item-name'>
+						{friendsProps.name}
+						{friendsProps.surname}
+					</div>
+				</Link>
 			</div>
 		));
 
-	const friendsList = renderFriends(friends);
+	const friendsList = renderFriends(friendsProps);
 	return (
 		<section className='friends'>
 			<div className='friends_wrapper'>

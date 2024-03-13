@@ -1,14 +1,12 @@
-import './rightSideMainPage.scss';
-import { PhotoGallery } from './photoGallery/photoGallery';
-import { lazy } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
-import { useSelector } from 'react-redux';
-import { useGetFriendsQuery } from '../../api/apiSlice';
+import '../rightSideMainPage.scss';
 
-const FriendList = lazy(() => import('./friendList/friendList'));
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { PhotoGallery } from '../photoGallery/photoGallery';
+import FriendList from '../friendList/friendList';
+import { useParams } from 'react-router-dom';
+import { useGetFriendsQuery } from '../../../api/apiSlice';
+import ErrorGif from '../../Page404/error.gif'
 
 const dropDownInfoVariants = {
 	initial: {
@@ -25,15 +23,22 @@ const dropDownInfoVariants = {
 	},
 };
 
-const RightSideMainPage = () => {
+export const FriendPage = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const { isAuth, email } = useAuth();
+	const [friend, setFriend] = useState([]);
 	const { data: friends, error, isLoading } = useGetFriendsQuery();
+	const { friendId } = useParams();
 
-	const user = useSelector(state => state.user);
-	let navigate = useNavigate();
-	console.log(user);
-	return isAuth ? (
+	useEffect(() => {
+		if (friends) {
+			const foundFriend = friends.find(friend => friend.id === friendId);
+			setFriend(foundFriend);
+		}
+	}, [friends, friendId]);
+
+	console.log(friend);
+
+	return (
 		<div className='layout_main'>
 			<div className='layout_main_header'>
 				<div className='layout_main_header-bg'>
@@ -47,7 +52,7 @@ const RightSideMainPage = () => {
 						<div className='layout_main_user-info-wrapper'>
 							<div className='layout_main_user-info-wrapper-photo'>
 								<img
-									src={user.avatarLink}
+									src={friend.avatar ? friend.avatar : ErrorGif}
 									alt='userPhoto'
 									width={'150px'}
 									height={'150px'}
@@ -55,12 +60,14 @@ const RightSideMainPage = () => {
 							</div>
 							<div className='layout_main_user-info-wrapper-text'>
 								<h2>
-									{user.name} {user.surname}
+									{friend.name} {friend.surname && null}
 								</h2>
 								<span>status</span>
 								<br />
 								<div className='location_nd_more'>
-									<span>location</span>
+									<span>
+										{friend.location ? friend.location : 'no location'}
+									</span>
 									<span
 										className='location_nd_more-info'
 										onClick={() => setIsOpen(!isOpen)}
@@ -77,7 +84,9 @@ const RightSideMainPage = () => {
 												className='dropdown_info'
 											>
 												<ul className='dropdown_info_list'>
-													<li className='dropdown_info_list-item'>data</li>
+													<li className='dropdown_info_list-item'>
+														age: {friend.age}
+													</li>
 													<li className='dropdown_info_list-item'>data</li>
 													<li className='dropdown_info_list-item'>data</li>
 												</ul>
@@ -91,13 +100,9 @@ const RightSideMainPage = () => {
 				</div>
 			</div>
 			<div className='layout_main_body'>
-				<PhotoGallery photoProps={user.gallery}/>
-				<FriendList friendsProps={friends} />
+				<PhotoGallery photoProps={friend.gallery ? friend.gallery : null} />
+				<FriendList friendsProps={friend.friends} />
 			</div>
 		</div>
-	) : (
-		navigate('/login')
 	);
 };
-
-export default RightSideMainPage;

@@ -1,21 +1,51 @@
 import './photoGallery.scss';
 
-export const PhotoGallery = () => {
+export const PhotoGallery = ({ photoProps }) => {
+	const renderPhotos = photos => {
+		if (!photos)
+			return (
+				<div
+					style={{
+						fontSize: '40px',
+						color: 'white',
+						textAlign: 'center',
+						verticalAlign: 'center',
+					}}
+				>
+					<img
+						style={{ objectFit: 'fill' }}
+						width={'100%'}
+						height={'100%'}
+						src='https://isratowers.com/images/image-not-found.jpg'
+						alt=''
+					/>
+				</div>
+			);
+		return photos.map(photo => (
+			<div className='gallery_into_photos-item'>
+				<img width='170px' height='200px' src={photo} alt='' />
+			</div>
+		));
+	};
+
+	const photos = renderPhotos(photoProps);
+	console.log(photoProps);
 	return (
 		<section className='gallery'>
 			<div className='gallery_into'>
 				{/* <div className='gallery_into_tabs'> */}
-					{/* <ul className='gallery_into_tabs_list'>
+				{/* <ul className='gallery_into_tabs_list'>
 						<li className='gallery_into_tabs_list-item'>Gallery</li>
 						<li className='gallery_into_tabs_list-item'>Music</li>
 						<li className='gallery_into_tabs_list-item'>Albums</li>
 						<li className='gallery_into_tabs_list-item'>Clips</li>
 						<li className='gallery_into_tabs_list-item'>Stories</li>
 					</ul> */}
-					<div className='gallery_into_header'>Gallery</div>
+				<div className='gallery_into_header'>Gallery</div>
 				{/* </div> */}
 				<div className='gallery_into_photos'>
-					<div className='gallery_into_photos-item'>
+					{photos}
+					{/* <div className='gallery_into_photos-item'>
 						<img
 							width='170px'
 							height='200px'
@@ -70,7 +100,7 @@ export const PhotoGallery = () => {
 							src='https://sun9-45.userapi.com/impg/gc5fAUczorthIwDH-nD97qHHjR5Rlh83V-Mfdg/lA8xU950qGE.jpg?size=2000x1413&quality=96&sign=7d3be7707517dc26c6e605dd4df4e92c&type=album'
 							alt=''
 						/>
-					</div>
+					</div> */}
 				</div>
 				<div className='gallery_into_btns'></div>
 			</div>

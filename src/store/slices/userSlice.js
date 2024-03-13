@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
 	email: null,
@@ -7,7 +7,7 @@ const initialState = {
 	name: null,
 	surname: null,
 	avatarLink: null,
-}
+};
 
 const userSlice = createSlice({
 	name: 'user',
@@ -20,17 +20,19 @@ const userSlice = createSlice({
 			state.surname = action.payload.surname;
 			state.name = action.payload.name;
 			state.avatarLink = action.payload.avatarLink;
+			state.gallery = action.payload.gallery;
 		},
-		removeUser(state){
+		removeUser(state) {
 			state.email = null;
 			state.token = null;
 			state.id = null;
 			state.name = null;
 			state.surname = null;
 			state.avatarLink = null;
-		}
+			state.gallery = null;
+		},
 	},
 });
 
-export const {setUser, removeUser} = userSlice.actions;
+export const { setUser, removeUser } = userSlice.actions;
 export default userSlice.reducer;

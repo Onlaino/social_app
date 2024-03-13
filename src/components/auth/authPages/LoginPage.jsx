@@ -35,6 +35,7 @@ export const LoginPage = () => {
 									name: user.name,
 									surname: user.surname,
 									avatarLink: user.avatarLink,
+									gallery: user.gallery,
 								})
 							);
 							navigate('/main');
